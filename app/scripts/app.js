@@ -7,22 +7,24 @@ angular.module('confAppApp', [
 ])
   .config(function ($routeProvider, $locationProvider) {
     
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/admin', {
-        templateUrl: 'views/admin.html',
-        controller: 'adminCtrl'
-      })          
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })       
       .when('/admin/:id', {
         templateUrl: 'views/admin.html',
-        controller: 'adminCtrl'
-      })      
+        controller: 'AdminCtrl'
+      })                
       .otherwise({
         redirectTo: '/'
       });
   });
+
+
