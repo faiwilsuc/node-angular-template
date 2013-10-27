@@ -17,6 +17,10 @@ angular.module('confAppApp', [
       .when('/admin', {
         templateUrl: 'views/admin.html',
         controller: 'adminCtrl'
+      })          
+      .when('/admin/:id', {
+        templateUrl: 'views/admin.html',
+        controller: 'adminCtrl'
       })      
       .otherwise({
         redirectTo: '/'
