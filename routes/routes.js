@@ -98,10 +98,13 @@ routes.put.item = function(req, res){
     var ObjectId = mongojs.ObjectId;    
     var my_objectID = ObjectId(req.body._id);
     var updated = req.body;
-    updated.collection = undefined;
-    updated._id = undefined;
-    
-    tempCollection.update({_id: my_objectID}, req.body, {upsert: true}, function(err, docs){
+    delete updated.collection;
+    delete updated._id;
+
+console.log('Updated:');
+console.log(updated);
+
+    tempCollection.update({_id: my_objectID}, updated, {upsert: true}, function(err, docs){
 
         console.log(err);
         console.log(docs);

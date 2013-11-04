@@ -5,6 +5,8 @@ angular.module('confAppApp')
 
   	$scope.items = [];
 
+    $scope.targetUrl = '/' + $routeParams.collection + "/";
+    
   	//Return a list of all items belonging to the named collection
   	$http({method:'get', url:'/api/collection/' + $routeParams.collection}).
   		success(function(data, status, headers, config){
@@ -29,6 +31,7 @@ angular.module('confAppApp')
 
 
         $location.path('/' + $routeParams.collection + "/" + targetItem);
+
         return false;
         
       };

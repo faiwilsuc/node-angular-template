@@ -11,10 +11,10 @@ angular.module('confAppApp', [
 
     $routeProvider
       //Home
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
+      //.when('/', {
+      //  templateUrl: 'views/main.html',
+      //  controller: 'MainCtrl'
+      //})
       //View all items in a collection
       .when('/:collection', {
         templateUrl: 'views/collection.html',
@@ -39,7 +39,7 @@ angular.module('confAppApp', [
         controller: 'AdminCtrl'
       })                
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '#/items/'
       });
   });
 
