@@ -25,7 +25,21 @@ routes.post.item = function(req, res){
 
 };
 
-routes.post.item_collection = function(req, res){};
+routes.post.collection = function(req, res){
+
+    console.log(req.body);
+
+    items.save(req.body, function(err, saved){
+        
+        console.log("Saved...");
+        console.log(err);
+        console.log(saved);
+        res.send(saved);
+
+    });
+
+
+};
 
 //Routes: Read
 routes.get.item = function(req, res){

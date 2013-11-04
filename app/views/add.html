@@ -1,0 +1,27 @@
+<h1>Add a new session</h1>
+<div class="container">
+    <div class="span12">
+            <label>Session Name</label>
+            <input type="text" id="sessionName" ng-model="newSession.sessionName" />
+    </div>
+    <div class="span12">
+            <label>Speaker Name</label>
+            <input type="text" id="sessionName" ng-model="newSession.speakerName" />
+    </div>
+    <div class="span12">
+            <label>Session Summary</label>
+            <input type="text" id="sessionName" ng-model="newSession.sessionSummary" />
+    </div>        
+    <div class="span12">
+        <label>Start Time (enter in 24 hour time, e.g. 14:30)</label>
+        <input type="text" id="sessionName" ng-model="newSession.startTime" />
+    </div>      
+    <div class="span12">
+            <label>End Time (enter in 24 hour time, e.g. 14:30)</label>
+            <input type="text" id="sessionName" ng-model="newSession.endTime" />
+    </div>                
+    </div>      
+    <div class="span12">
+        <button ng-click="saveSession();">Save</button>
+    </div>                 
+</div>  

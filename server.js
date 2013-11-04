@@ -22,7 +22,7 @@ app.use(app.router);
 
 //Routes
 app.post('/api/item', routes.post.item);
-
+app.post('/api/collection', routes.post.collection);
 
 app.get('/api/item/:collection/:item', routes.get.item);
 app.get('/api/collection/:collection', routes.get.items);

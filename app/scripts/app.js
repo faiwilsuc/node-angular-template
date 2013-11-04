@@ -11,10 +11,21 @@ angular.module('confAppApp', [
 
     $routeProvider
       //Home
-      //.when('/', {
+      .when('/', {
       //  templateUrl: 'views/main.html',
       //  controller: 'MainCtrl'
-      //})
+      redirectTo: '/items/'
+      })
+            //Create a new item
+      .when('/add/session', {
+        templateUrl: 'views/add.html',
+        controller: "AddCtrl",
+      })
+      //Delete an item
+      .when('/delete/:id', {
+        templateUrl: 'views/delete.html',
+        controller: "DeleteCtrl",
+      })      
       //View all items in a collection
       .when('/:collection', {
         templateUrl: 'views/collection.html',
@@ -26,7 +37,6 @@ angular.module('confAppApp', [
         controller: "ItemCtrl",
         resolve:  ItemCtrl.resolve
       })
-      //Create a new item
 
       //Create a new collection
 
