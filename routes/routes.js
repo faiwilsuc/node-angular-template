@@ -55,7 +55,7 @@ routes.get.item = function(req, res){
     var ObjectId = mongojs.ObjectId;    
     var my_objectID = ObjectId(req.params.id);
 
-    tempCollection.find({title: req.params.item}, function(err, docs){
+    tempCollection.find({sessionName: req.params.item}, function(err, docs){
 
         console.log(err);
         console.log(docs);

@@ -1,5 +1,5 @@
 <a href="/add/session">Create new</a>
 
 <ul ng-repeat="item in items">
-	<li><a ng-href="{{targetUrl + item.title}}">{{item.title}}</a> :: <a href="/delete/{{item._id}}">Delete</a></li>
+	<li><a ng-href="{{targetUrl + item.sessionName}}">{{item.sessionName}}</a> :: <a href="/delete/{{item.sessionName}}">Delete</a></li>
 </ul>

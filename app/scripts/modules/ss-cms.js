@@ -1,4 +1,9 @@
-angular.module('confAppApp').factory('ssContentManager', function () {
+
+//Create the contentTools module
+var contentTools = angular.module('contentTools',[]);
+
+//ContentManager factory
+contentTools.factory('ctContentManager', function () {
 
     var ContentManager = function (args) {
 
@@ -38,11 +43,10 @@ angular.module('confAppApp').factory('ssContentManager', function () {
 
 });
 
-angular.module('confAppApp').directive('ssContent', function ($templateCache) {
+//contentContainer directive
+contentTools.directive('ctContentContainer', function ($templateCache) {
 
     //Content templates
-
-
     var templates = {
         "text|div": {
             "edit": "<input type='text' id='{{id}}' class='{{class}} contentInput' ng-model='{{model}}' value='{{content}}'/>",
@@ -72,6 +76,7 @@ angular.module('confAppApp').directive('ssContent', function ($templateCache) {
         //Loop through supplied data and insert into template
         for (key in itemData) {
 
+            //Check key isn't from prototype
             if (itemData.hasOwnProperty(key)) {
 
                 template = template.replace('{{' + key + '}}', itemData[key]);
@@ -80,15 +85,17 @@ angular.module('confAppApp').directive('ssContent', function ($templateCache) {
 
         }
 
+        //Create jQuery object from template
         template = $(template);
 
+        //If edit mode template
         if (itemData.editMode === true) {
 
             var templateTemp = $(templates.common.editModeContainer);
             templateTemp.find('.content-area').append(template);
             template = templateTemp;
         }
-
+   
         if (itemMode === 'edit') {
             //console.log(templates.common.editButton);
 

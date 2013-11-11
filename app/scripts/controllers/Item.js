@@ -1,35 +1,15 @@
 'use strict';
 
-var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($scope, $http, $routeParams, ssContentManager, datasets) {
+var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($scope, $http, $routeParams, datasets, ctContentManager) {
 
+	//Get data returned from resolve function
   	$scope.content = datasets.data[0];
+
+  	//Collection being invoked by this controller
   	$scope.content.collection = 'items';
-  	//Get the requested item, from the requested collection from the web service
-/**
-  	$http({method:"get", url:"/api/item/" + $routeParams.collection + "/" + $routeParams.item}).
-  		
-  		success(function(data, status, headers, config){
-
-			$scope.content = data[0];
-
-			console.log('before contentManager');
-			console.log($scope);
-
-  		}).
-  		error(function(data, status, headers, config){
-  			
-  			$scope.content = "";
-
-  			console.log('Error communicating with server: ' + status);
-  			console.log(headers);
-  			console.log(data);
-
-  		});
-
-	*/
-
-			
-	var contentManager = ssContentManager({
+	
+	//Create new contentManager		
+	var contentManager = ctContentManager({
 
 		//items:[], //Optional array of ss-content items. If not provided the content manager watches them all
 		//url: '', //Url of persistant storage service
@@ -55,6 +35,7 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 
 	});
 
+	//Enable two way data binding by updating posting data to webservice when item on scope changes
   	$scope.$watch('content', function() {
 	
 		$http({method:"PUT", url:"/api/item", data: $scope.content});
@@ -63,15 +44,23 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 
 });
 
-
+//resolve function to run before controller
 ItemCtrl.resolve = {
     datasets : function($q, $http, $route) {
         
-        return $http({method:"get", url:"/api/item/" + $route.current.params.collection + "/" + $route.current.params.item});
-        console.log('inside deferred');
-        console.log($route);
-        console.log($route.current.params.collection + "/" + $route.current.params.item);
+		return $http({method:"get", url:"/api/item/" + $route.current.params.collection + "/" + $route.current.params.item})
+			.success(function(data, status, headers, config){
+				console.log("Winner winner chicken dinner");
 
-        return $route.current.params.collection + "/" + $route.current.params.item;
-    }
+			}).error(function(data, status, headers, config){
+				console.log("Scale the trail of the fail");
+
+			});
+
+	//console.log($route.current.params.collection + "/" + $route.current.params.item);
+
+	//return $route.current.params.collection + "/" + $route.current.params.item;
+	}
 };
+
+

@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('confAppApp', [
+  'contentTools',
   'ngCookies',
   'ngResource',
   'ngSanitize'
