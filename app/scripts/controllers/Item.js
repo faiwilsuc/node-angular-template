@@ -1,12 +1,12 @@
 'use strict';
 
-var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($scope, $http, $routeParams, datasets, ctContentManager) {
+var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($scope, $http, $routeParams, ctContentManager, ConfSessions, datasets) {
 
 	//Get data returned from resolve function
-  	$scope.content = datasets.data[0];
+  	$scope.content = datasets[0];
 
-  	//Collection being invoked by this controller
-  	$scope.content.collection = 'items';
+    //Set the colledction name
+    $scope.content.collection = 'items';
 	
 	//Create new contentManager		
 	var contentManager = ctContentManager({
@@ -21,6 +21,7 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 	//Event handler to toggle edit mode
 	$scope.authenticate = function(){
 
+        //Replace this functionality with an event listener in the contentManager that listens for an event on the root scope
 		//Toggle edit mode on content elements watched by contentManagaer
 		contentManager.editMode('toggle');	
 
@@ -38,29 +39,25 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 	//Enable two way data binding by updating posting data to webservice when item on scope changes
   	$scope.$watch('content', function() {
 	
-		$http({method:"PUT", url:"/api/item", data: $scope.content});
+		//$http({method:"PUT", url:"/api/item", data: $scope.content});
+        
+        ConfSessions.save({data: $scope.content})
 
   	}, true);
 
 });
 
+
 //resolve function to run before controller
 ItemCtrl.resolve = {
-    datasets : function($q, $http, $route) {
-        
-		return $http({method:"get", url:"/api/item/" + $route.current.params.collection + "/" + $route.current.params.item})
-			.success(function(data, status, headers, config){
-				console.log("Winner winner chicken dinner");
+    datasets : function($q, $http, $route, ConfSessions) {
+        var deferred = $q.defer();
 
-			}).error(function(data, status, headers, config){
-				console.log("Scale the trail of the fail");
+        ConfSessions.query({item_name:$route.current.params.item}, function(resultData){
+            deferred.resolve(resultData);
+        });
 
-			});
+        return deferred.promise;
 
-	//console.log($route.current.params.collection + "/" + $route.current.params.item);
-
-	//return $route.current.params.collection + "/" + $route.current.params.item;
 	}
 };
-
-

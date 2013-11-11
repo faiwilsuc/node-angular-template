@@ -22,7 +22,6 @@ routes.post.item = function(req, res){
 
     });
 
-
 };
 
 routes.post.collection = function(req, res){
@@ -115,9 +114,6 @@ routes.put.item = function(req, res){
     delete updated.collection;
     delete updated._id;
 
-console.log('Updated:');
-console.log(updated);
-
     tempCollection.update({_id: my_objectID}, updated, {upsert: true}, function(err, docs){
 
         console.log(err);
@@ -136,7 +132,17 @@ console.log(updated);
 routes.put.collection = function(req, res){};
 
 //Routes: Delete
-routes.delete.item = function(){};
+routes.delete.item = function(req, res){
+    
+    console.log("Running delete item route...");
+    console.log(req);
+    console.log(req.body);
+
+    res.send({
+        value: "delete"
+    });
+
+};
 
 routes.delete.collection = function(){};
 

@@ -21,13 +21,28 @@ app.use(app.router);
 
 
 //Routes
-app.post('/api/item', routes.post.item);
+app.post('/api/collection/items', routes.post.item);
 app.post('/api/collection', routes.post.collection);
 
-app.get('/api/item/:collection/:item', routes.get.item);
+app.get('/api/collection/:collection/:item', routes.get.item);
 app.get('/api/collection/:collection', routes.get.items);
 
-app.put('/api/item', routes.put.item);
+app.delete('/api/item', routes.delete.item);
+
+app.put('/api/collection/items', routes.put.item);
+
+//Create
+//app.post('/api/item', routes.post.item);
+
+//Read
+//app.get('/api/item/:collection/:item', routes.get.item);
+
+//Update
+
+//Delete
+
+
+
 
 //All other routes passed to angular client
 app.use(express.static(path.join(__dirname, '/app')));
