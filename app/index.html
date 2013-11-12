@@ -48,11 +48,17 @@
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
+
+            <span ng-include="'views/login.html'"></span>
+            <!--
             <form class="navbar-form pull-right">
               <input class="span2" type="text" placeholder="Email">
               <input class="span2" type="password" placeholder="Password">
               <button type="submit" class="btn toggleEditModeButton">Sign in</button>
             </form>
+          -->
+
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -111,6 +117,7 @@
         <script src="scripts/controllers/Item.js"></script>
         <script src="scripts/controllers/delete.js"></script>
         
+        <script src="scripts/services/UserManager.js"></script>
         <!-- endbuild -->
 </body>
 </html>

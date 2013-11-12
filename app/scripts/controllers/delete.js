@@ -1,8 +1,17 @@
 'use strict';
 
 angular.module('confAppApp')
-    .controller('DeleteCtrl', function ($scope, $location, $http, $route) {
+    .controller('DeleteCtrl', function ($scope, $location, $http, $route, ConfSessions) {
 
+        ConfSessions.remove({},{item_name: $route.current.params.item}, function(){
+            
+            console.log('delete complete!');
+
+            $location.path('/');
+
+        });
+
+        /*
         $http({
 
             method: "delete",
@@ -18,7 +27,7 @@ angular.module('confAppApp')
             console.log("Scale the trail of the fail");
 
         });
-
+    */
         //$location.path('/');
 
     });

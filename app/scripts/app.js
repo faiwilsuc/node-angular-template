@@ -23,7 +23,7 @@ angular.module('confAppApp', [
         controller: "AddCtrl",
       })
       //Delete an item
-      .when('/delete/:id', {
+      .when('/delete/:item', {
         templateUrl: 'views/delete.html',
         controller: "DeleteCtrl",
       })      

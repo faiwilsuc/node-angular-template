@@ -6,19 +6,21 @@ angular.module('confAppApp').controller('AddCtrl', function ($scope, $http, $rou
 
     $scope.saveSession = function(){
 
-        ConfSessions.save(newSessionData, function(data){
+       var newSessionData = $scope.newSession;
+
+        ConfSessions.post(newSessionData, function(data){
 
                     
                     console.log(data);
 
                     //Add the collection of items to the $scope
                     $scope.items = data;
+
+                    
                     
         });
 
-
-       var newSessionData = $scope.newSession;
-
+$location.path('/');
 
 
     };

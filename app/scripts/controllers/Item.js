@@ -1,9 +1,11 @@
 'use strict';
 
-var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($scope, $http, $routeParams, ctContentManager, ConfSessions, datasets) {
+var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($scope, $rootScope, $http, $routeParams, ctContentManager, ConfSessions, datasets) {
 
 	//Get data returned from resolve function
   	$scope.content = datasets[0];
+
+    console.log($scope.content);
 
     //Set the colledction name
     $scope.content.collection = 'items';
@@ -19,12 +21,14 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 	});
 
 	//Event handler to toggle edit mode
-	$scope.authenticate = function(){
+	$rootScope.authenticate = function(e){
 
         //Replace this functionality with an event listener in the contentManager that listens for an event on the root scope
 		//Toggle edit mode on content elements watched by contentManagaer
-		contentManager.editMode('toggle');	
-
+        console.log(e);
+        if (e.username == "paupl" && e.password == "paupl123"){
+		  contentManager.editMode('toggle');	
+        }
 	};
 
 
@@ -41,7 +45,7 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 	
 		//$http({method:"PUT", url:"/api/item", data: $scope.content});
         
-        ConfSessions.save({data: $scope.content})
+        ConfSessions.update($scope.content)
 
   	}, true);
 

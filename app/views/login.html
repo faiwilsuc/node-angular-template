@@ -1,4 +1,5 @@
 <style>
+/*
       .form-signin {
         max-width: 300px;
         padding: 19px 29px 29px;
@@ -23,7 +24,9 @@
         margin-bottom: 15px;
         padding: 7px 9px;
       }
+      */
 </style>
+<!--
       <form class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="input-block-level" placeholder="Email address">
@@ -33,3 +36,10 @@
         </label>
         <button class="btn btn-large btn-primary" type="submit">Sign in</button>
       </form>
+-->
+
+            <form class="navbar-form pull-right" ng-controller="LoginCtrl">
+              <input class="span2" type="text" placeholder="Email" ng-model="user.username">
+              <input class="span2" type="password" placeholder="Password" ng-model="user.password">
+              <button type="submit" class="btn" ng-click="login();">Sign in</button>
+            </form>

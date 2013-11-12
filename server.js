@@ -21,15 +21,29 @@ app.use(app.router);
 
 
 //Routes
-app.post('/api/collection/items', routes.post.item);
+app.post('/api/collection/items', routes.put.item);
 app.post('/api/collection', routes.post.collection);
 
 app.get('/api/collection/:collection/:item', routes.get.item);
 app.get('/api/collection/:collection', routes.get.items);
 
-app.delete('/api/item', routes.delete.item);
+app.delete('/api/collection/items/:item_name', routes.delete.item);
 
 app.put('/api/collection/items', routes.put.item);
+
+app.post('/api/user/login', function(req, res){
+
+    if (req.body.username == "paupl" && req.body.password == "paupl123"){
+        console.log("login success");
+        res.send('true');
+    }else{
+        console.log("login fail");
+        res.status(401);
+        res.send();
+    }
+
+    
+});
 
 //Create
 //app.post('/api/item', routes.post.item);

@@ -106,13 +106,20 @@ routes.put.item = function(req, res){
 
     var tempCollection;
 
-    tempCollection = db.collection(req.body.collection);
+    tempCollection = db.collection("items");
+    
+    console.log(req.body);
+    console.log(req.body._id);
 
     var ObjectId = mongojs.ObjectId;    
     var my_objectID = ObjectId(req.body._id);
+    
+
+
     var updated = req.body;
     delete updated.collection;
     delete updated._id;
+
 
     tempCollection.update({_id: my_objectID}, updated, {upsert: true}, function(err, docs){
 
@@ -134,13 +141,27 @@ routes.put.collection = function(req, res){};
 //Routes: Delete
 routes.delete.item = function(req, res){
     
-    console.log("Running delete item route...");
-    console.log(req);
-    console.log(req.body);
+    console.log('delete running...' + req.params.item_name);
 
-    res.send({
-        value: "delete"
+    var tempCollection;
+
+    tempCollection = db.collection("items");
+
+    tempCollection.remove({sessionName:req.params.item_name}, function(e){
+
+        console.log("Running delete item route...");
+        console.log(e);
+
+        res.send({
+            value: "true"
+        });
+
     });
+
+    //res.send({
+        //value: "false"
+    //});
+
 
 };
 
