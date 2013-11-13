@@ -38,8 +38,16 @@
       </form>
 -->
 
-            <form class="navbar-form pull-right" ng-controller="LoginCtrl">
-              <input class="span2" type="text" placeholder="Email" ng-model="user.username">
-              <input class="span2" type="password" placeholder="Password" ng-model="user.password">
-              <button type="submit" class="btn" ng-click="login();">Sign in</button>
-            </form>
+<div ng-switch on="status" ng-controller="LoginCtrl">
+  
+  <span ng-switch-when="false">
+    <form class="navbar-form pull-right">
+      <input class="span2" type="text" placeholder="Email" ng-model="user.username">
+      <input class="span2" type="password" placeholder="Password" ng-model="user.password">
+      <button type="submit" class="btn" ng-click="login();">Sign in</button>
+    </form>
+  </span>
+  <span ng-switch-when="true">
+  <button ng-click="logout();">LOGGED IN!!</button>
+  </span>
+</div>            

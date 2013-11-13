@@ -7,7 +7,7 @@ angular.module('confAppApp', [
   'ngSanitize'
 ])
   .config(function ($routeProvider, $locationProvider) {
-    
+
     $locationProvider.html5Mode(true);
 
     $routeProvider
@@ -52,6 +52,26 @@ angular.module('confAppApp', [
       .otherwise({
         redirectTo: '#/items/'
       });
+  }).run(function($rootScope){
+
+    console.log("check for session and log user in");
+    //$http -> Success
+    $rootScope.status = true;
+    
+    //Event handler to toggle edit mode
+    $rootScope.authenticate = function(e){
+
+      //Replace this functionality with an event listener in the contentManager that listens for an event on the root scope
+      //Toggle edit mode on content elements watched by contentManagaer
+      
+      if (e.username == "paupl" && e.password == "paupl123"){
+
+        //contentManager.editMode('toggle');  
+        console.log("fire ADMIN MODE event");
+
+      }
+        
+    };
   });
 
 

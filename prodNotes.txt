@@ -1,0 +1,17 @@
+User logs in
+	
+	change "$rootScope.status" to true and login.js reacts and logs the user in
+	when a user is logged in by login.js an event fires to enable content admin mode (shows edit buttons)
+
+User logs out
+
+	change "$rootScope.status" to false and login.js reacts and logs the user out
+
+Editing content
+
+	When an edit button is clicked an event is fired to enable edit mode in the corresponding element(s)
+
+
+Express server security
+
+	Session status checked before any CRUD operations are performed

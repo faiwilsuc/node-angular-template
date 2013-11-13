@@ -20,17 +20,6 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 
 	});
 
-	//Event handler to toggle edit mode
-	$rootScope.authenticate = function(e){
-
-        //Replace this functionality with an event listener in the contentManager that listens for an event on the root scope
-		//Toggle edit mode on content elements watched by contentManagaer
-        console.log(e);
-        if (e.username == "paupl" && e.password == "paupl123"){
-		  contentManager.editMode('toggle');	
-        }
-	};
-
 
 	//Event handler for Edit Mode buttons
 	$('.toggleEditModeButton').click(function(){
