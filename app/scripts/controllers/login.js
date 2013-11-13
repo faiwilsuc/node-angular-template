@@ -30,9 +30,16 @@ angular.module('confAppApp')
     };
 
     $scope.logout = function(){
-        $rootScope.authStatus = false;
-        console.log("fire USER MODE event");
-        $rootScope.$broadcast('ssTrigger', 'hide');
+        $http.post("api/userLogout", {})
+            .success(function(){
+                $rootScope.authStatus = false;
+                console.log("fire USER MODE event");
+                $rootScope.$broadcast('ssTrigger', 'hide');
+
+            })
+            .error(function(){
+
+            });
     };
 
   });

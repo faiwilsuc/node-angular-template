@@ -81,7 +81,7 @@ passport.deserializeUser(function(id, done){
     });
 });
 
-app.get('/api/userLogout', function(req, res){
+app.post('/api/userLogout', function(req, res){
     
     req.logout();
     res.redirect("/");
@@ -97,10 +97,6 @@ app.post('/api/checkUserStatus', function(req, res){
         res.send('false');
     }
 
-});
-
-app.get('/api/loginTest', passport.authenticate('local'), function(req, res){
-    res.send("true");
 });
 
 app.get('/api/createUser/:username/:password', function(req, res){
