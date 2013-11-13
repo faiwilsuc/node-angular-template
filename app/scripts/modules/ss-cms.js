@@ -44,7 +44,9 @@ contentTools.factory('ctContentManager', function () {
 });
 
 //contentContainer directive
-contentTools.directive('ctContentContainer', function ($templateCache) {
+contentTools.directive('ctContentContainer', function ($templateCache, $rootScope) {
+
+    
 
     //Content templates
     var templates = {
@@ -253,10 +255,10 @@ contentTools.directive('ctContentContainer', function ($templateCache) {
             };
 
             //listen for a trigger event to change the status of the element
-            scope.$on('ssTrigger', function (event, msg) {
+            $rootScope.$on('ssTrigger', function (event, msg) {
 
                 if (msg === 'hide') {
-                    alert('save');
+                    //alert('save');
                     //Disable edit mode with save / cancel instruction
                     disableEdit('save');
 

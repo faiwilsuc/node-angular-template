@@ -5,7 +5,8 @@
     "express": "~3.4.3",
     "passport": "~0.1.17",
     "passport-google": "~0.3.0",
-    "mongojs": "~0.9.6"
+    "mongojs": "~0.9.6",
+    "passport-local": "~0.1.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

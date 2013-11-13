@@ -5,41 +5,23 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
 	//Get data returned from resolve function
   	$scope.content = datasets[0];
 
-    console.log($scope.content);
-
-    //Set the colledction name
+    //Set the colledction name <-This could come from the url
     $scope.content.collection = 'items';
 	
 	//Create new contentManager		
 	var contentManager = ctContentManager({
-
-		//items:[], //Optional array of ss-content items. If not provided the content manager watches them all
-		//url: '', //Url of persistant storage service
-		//driver: '', //The type of persistant storage. Default (and only option!!) JSON WebService
+		//items:[], //Optional array of ct-content items. If not provided the content manager watches them all
 		scope: $scope //Pass the current scope
-
-	});
-
-
-	//Event handler for Edit Mode buttons
-	$('.toggleEditModeButton').click(function(){
-
-		//Check that the user is authenticated at this point??
-		$scope.authenticate();
-
 	});
 
 	//Enable two way data binding by updating posting data to webservice when item on scope changes
   	$scope.$watch('content', function() {
-	
-		//$http({method:"PUT", url:"/api/item", data: $scope.content});
         
         ConfSessions.update($scope.content)
 
   	}, true);
 
 });
-
 
 //resolve function to run before controller
 ItemCtrl.resolve = {

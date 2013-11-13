@@ -1,5 +1,5 @@
-<a href="/add/session">Create new</a>
+<a href="/add/session" ng-show="authStatus">Create new</a>
 
 <ul ng-repeat="item in items">
-	<li><a ng-href="{{targetUrl + item.sessionName}}">{{item.sessionName}}</a> :: <a href="/delete/{{item.sessionName}}">Delete</a></li>
+	<li><a ng-href="{{targetUrl + item.sessionName}}">{{item.sessionName}}</a> :: <a ng-show="authStatus" href="/delete/{{item.sessionName}}">Delete</a></li>
 </ul>

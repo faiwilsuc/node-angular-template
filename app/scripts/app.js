@@ -52,12 +52,34 @@ angular.module('confAppApp', [
       .otherwise({
         redirectTo: '#/items/'
       });
-  }).run(function($rootScope){
+  }).run(function($rootScope, $http){
 
     console.log("check for session and log user in");
-    //$http -> Success
-    $rootScope.status = true;
-    
+
+$rootScope.$on('$viewContentLoaded', function() {
+    $http.post('/api/checkUserStatus',{})
+      .success(function(){
+
+        console.log("You are logged in");
+
+        $rootScope.authStatus = true;
+
+        
+
+          //call it here
+          $rootScope.$broadcast('ssTrigger', 'show');
+
+             
+
+      })
+      .error(function(){
+        console.log("You are not logged in");
+        $rootScope.authStatus = false;
+
+      });
+      });   
+
+
     //Event handler to toggle edit mode
     $rootScope.authenticate = function(e){
 
