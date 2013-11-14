@@ -1,5 +1,5 @@
 body {
-    background: #fafafa;
+    background: #A9CC66;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -20,3 +20,50 @@ body {
     line-height: 1;
     letter-spacing: -1px;
 }
+
+.sessionList {
+    list-style-type: none;
+}
+
+.sessionItem {
+
+}
+
+.sessionItem a{
+    display:block;
+    padding: 20px 10px 20px 10px;
+    margin: 0 10px 0 10px;
+    background-color: #477725;
+}
+
+.sessionItem a:link, .sessionItem a:active, .sessionItem a:visited{
+    color:white;
+    font-weight: bold;
+    font-size:1.2em;
+}
+
+.sessionItem a:hover{
+    color:#5A1F00;
+    background-color:#D1570D;
+    text-decoration: none;
+}
+
+.deleteItem {
+margin-top: -60px;
+margin-right: 10px;
+padding: 20px;
+float:right;
+}
+
+.leftImage {
+    float: left;
+    background-color: blue;
+    height: 60px;
+    width: 60px;
+    margin: -20px 10px 0 -10px;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    background-color: green;
+}
+

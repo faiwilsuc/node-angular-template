@@ -10,6 +10,18 @@ angular.module('confAppApp')
 
   	//$scope.items = [];
 
+    $scope.deleteItem = function(itemName){
+
+      $location.path('/delete/' + itemName);
+
+    };
+
+    $scope.createSession = function(){
+
+      $location.path('/add/session');
+
+    };
+
     $scope.targetUrl = '/' + $routeParams.collection + "/";
     
 

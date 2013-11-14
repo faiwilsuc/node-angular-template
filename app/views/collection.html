@@ -1,5 +1,16 @@
-<a href="/add/session" ng-show="authStatus">Create new</a>
 
-<ul ng-repeat="item in items">
-	<li><a ng-href="{{targetUrl + item.sessionName}}">{{item.sessionName}}</a> :: <a ng-show="authStatus" href="/delete/{{item.sessionName}}">Delete</a></li>
+<button ng-show="authStatus" ng-click="createSession()">Add new session</button>
+<p></p>
+
+<div class="row">
+<div class="span12">
+<h2>Sessions</h2>
+</div></div>
+
+<div class="row">
+<div class="span12">
+<ul ng-repeat="item in items" class="sessionList">
+	<li class="sessionItem"><a ng-href="{{targetUrl + item.sessionName}}">{{item.startTime}} - {{item.endTime}} : {{item.sessionName}}<p><small>{{item.sessionSummary}}</small></p></a>
+    <button class='deleteItem' ng-show="authStatus" ng-click="deleteItem(item.sessionName)">Delete</button></li>
 </ul>
+</div></div>
