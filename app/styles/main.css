@@ -23,16 +23,17 @@ body {
 
 .sessionList {
     list-style-type: none;
+    margin-left:0px;
 }
 
 .sessionItem {
-
+    position:relative;
 }
 
 .sessionItem a{
     display:block;
     padding: 20px 10px 20px 10px;
-    margin: 0 10px 0 10px;
+    margin: 0 10px 0 0;
     background-color: #477725;
 }
 
@@ -49,10 +50,12 @@ body {
 }
 
 .deleteItem {
-margin-top: -60px;
-margin-right: 10px;
-padding: 20px;
-float:right;
+position:absolute;
+top: 0px;
+right: 0px;
+height: 100%;
+width: 20%;
+
 }
 
 .leftImage {
