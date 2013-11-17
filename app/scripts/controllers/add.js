@@ -3,7 +3,8 @@
 angular.module('confAppApp').controller('AddCtrl', function ($scope, $http, $routeParams, $location, ConfSessions) {
 
     $scope.newSession = {};
-
+    $scope.newSession.collection = "sessions";
+    
     $scope.saveSession = function(){
 
        var newSessionData = $scope.newSession;

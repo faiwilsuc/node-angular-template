@@ -11,13 +11,39 @@ angular.module('confAppApp', [
     $locationProvider.html5Mode(true);
 
     $routeProvider
+
+      /** Public Routes **/
       //Home
       .when('/', {
       //  templateUrl: 'views/main.html',
       //  controller: 'MainCtrl'
-      redirectTo: '/items/'
+        redirectTo: '/days/'
+      })  
+
+      .when('/days', {
+        templateUrl: 'views/days.html',
+        controller: 'DaysCtrl'
+      })    
+      .when('/days/:day', {
+        templateUrl: 'views/day.html',
+        controller: 'DayCtrl',
+        resolve:  DaysCtrl.resolver
+      })    
+      //View all items in a collection
+      .when('/sessions', {
+        templateUrl: 'views/collection.html',
+        controller: 'CollectionCtrl'
       })
-            //Create a new item
+            //View an item
+      .when('/sessions/:item', {
+        templateUrl: 'views/item.html',
+        controller: "ItemCtrl",
+        resolve:  ItemCtrl.resolve
+      })
+
+
+      /**Admin Routes **/
+      //Create a new item
       .when('/add/session', {
         templateUrl: 'views/add.html',
         controller: "AddCtrl",
@@ -26,21 +52,8 @@ angular.module('confAppApp', [
       .when('/delete/:item', {
         templateUrl: 'views/delete.html',
         controller: "DeleteCtrl",
-      })      
-      //View all items in a collection
-      .when('/:collection', {
-        templateUrl: 'views/collection.html',
-        controller: 'CollectionCtrl'
-      })
-      //View an item
-      .when('/:collection/:item', {
-        templateUrl: 'views/item.html',
-        controller: "ItemCtrl",
-        resolve:  ItemCtrl.resolve
-      })
-
+      })    
       //Create a new collection
-
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -50,7 +63,7 @@ angular.module('confAppApp', [
         controller: 'AdminCtrl'
       })                
       .otherwise({
-        redirectTo: '#/items/'
+        redirectTo: '/days'
       });
   }).run(function($rootScope, $http){
 

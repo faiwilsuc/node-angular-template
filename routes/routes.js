@@ -104,34 +104,51 @@ routes.get.searchCollections = function(req, res){};
 //Routes: Update
 routes.put.item = function(req, res){
 
+
     var tempCollection;
 
-    tempCollection = db.collection("items");
+    tempCollection = db.collection("sessions");
     
     console.log(req.body);
-    console.log(req.body._id);
 
-    var ObjectId = mongojs.ObjectId;    
-    var my_objectID = ObjectId(req.body._id);
-    
+    if (req.body.query){
+
+        //req.body.query.delete;
+
+        tempCollection.find({day:req.body.day}, function(err, docs){
+
+            console.log("found them");
+            res.send(docs);
+            return(true);
+
+        });
+
+    }else{
+
+        console.log(req.body);
+        console.log(req.body._id);
+
+        var ObjectId = mongojs.ObjectId;    
+        var my_objectID = ObjectId(req.body._id);
+        
 
 
-    var updated = req.body;
-    delete updated.collection;
-    delete updated._id;
+        var updated = req.body;
+        delete updated.collection;
+        delete updated._id;
 
 
-    tempCollection.update({_id: my_objectID}, updated, {upsert: true}, function(err, docs){
+        tempCollection.update({_id: my_objectID}, updated, {upsert: true}, function(err, docs){
 
-        console.log(err);
-        console.log(docs);
+            console.log(err);
+            console.log(docs);
 
-        res.send(docs);
+            res.send(docs);
 
-    });    
+        });    
 
-    //Check that the page name doesn't conflict
-
+        //Check that the page name doesn't conflict
+    }
 
 
 };
@@ -145,7 +162,7 @@ routes.delete.item = function(req, res){
 
     var tempCollection;
 
-    tempCollection = db.collection("items");
+    tempCollection = db.collection("sessions");
 
     tempCollection.remove({sessionName:req.params.item_name}, function(e){
 

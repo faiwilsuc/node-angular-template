@@ -30,15 +30,17 @@ body {
     position:relative;
 }
 
-.sessionItem a{
+.sessionItem a, .sessionItem button{
     display:block;
     padding: 20px 10px 20px 10px;
     margin: 0 10px 0 0;
     background-color: #477725;
+    color:white;
+    cursor: pointer;
 }
 
 .sessionItem a:link, .sessionItem a:active, .sessionItem a:visited{
-    color:white;
+    
     font-weight: bold;
     font-size:1.2em;
 }

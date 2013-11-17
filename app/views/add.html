@@ -1,5 +1,6 @@
 <h1>Add a new session</h1>
 <div class="container">
+<div class="span12"></div>
     <div class="span12">
             <label>Session Name</label>
             <input type="text" id="sessionName" ng-model="newSession.sessionName" />
@@ -10,14 +11,18 @@
     </div>
     <div class="span12">
             <label>Session Summary</label>
-            <input type="text" id="sessionName" ng-model="newSession.sessionSummary" />
-    </div>        
+            <textarea  ng-model="newSession.sessionSummary" id="sessionName" ng-model="newSession.sessionSummary"></textarea>
+    </div>    
+    <div class="span12">
+        <label>Day No</label>
+        <input type="text" id="sessionName" ng-model="newSession.day" />
+    </div>    
     <div class="span12">
         <label>Start Time (enter in 24 hour time, e.g. 14:30)</label>
         <input type="text" id="sessionName" ng-model="newSession.startTime" />
     </div>      
     <div class="span12">
-            <label>End Time (enter in 24 hour time, e.g. 14:30)</label>
+            <label>End Time (enter in 24 hour time, e.g. 15:30)</label>
             <input type="text" id="sessionName" ng-model="newSession.endTime" />
     </div>                
     </div>      

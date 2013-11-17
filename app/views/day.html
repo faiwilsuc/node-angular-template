@@ -1,0 +1,14 @@
+<div class="row" style="margin-left:0px">
+    <div class="span12"><h2>Sessions</h2></div>
+</div>
+
+<div class="row" style="margin-left:0px">
+    <div class="span12">
+        <ul ng-repeat="item in items" class="sessionList">
+            <li class="sessionItem">
+                <a ng-href="{{targetUrl + item.sessionName}}">{{item.startTime}} - {{item.endTime}} : {{item.sessionName}}<p><small>{{item.sessionSummary}}</small></p></a>
+                <button class='deleteItem' ng-show="authStatus" ng-click="deleteItem(item.sessionName)">Delete</button>
+            </li>
+        </ul>
+    </div>
+</div>

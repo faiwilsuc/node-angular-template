@@ -6,7 +6,7 @@ var ItemCtrl = angular.module('confAppApp').controller('ItemCtrl', function ($sc
   	$scope.content = datasets[0];
 
     //Set the colledction name <-This could come from the url
-    $scope.content.collection = 'items';
+    $scope.content.collection = 'sessions';
 	
 	//Create new contentManager		
 	var contentManager = ctContentManager({
