@@ -17,7 +17,7 @@ angular.module('confAppApp', [
       .when('/', {
       //  templateUrl: 'views/main.html',
       //  controller: 'MainCtrl'
-        redirectTo: '/days/'
+        redirectTo: '/sessions/'
       })  
 
       .when('/days', {
@@ -35,7 +35,7 @@ angular.module('confAppApp', [
         controller: 'CollectionCtrl'
       })
             //View an item
-      .when('/sessions/:item', {
+      .when('/sessions/:session', {
         templateUrl: 'views/item.html',
         controller: "ItemCtrl",
         resolve:  ItemCtrl.resolve

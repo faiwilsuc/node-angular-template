@@ -11,7 +11,11 @@ routes = {
     'delete':{}
 },    
 
-//Routes: Create
+/**
+*   Create
+**/
+
+//Create a new item
 routes.post.item = function(req, res){
 
     console.log(req.body);
@@ -24,6 +28,7 @@ routes.post.item = function(req, res){
 
 };
 
+//Create a new collection
 routes.post.collection = function(req, res){
 
     console.log(req.body);
@@ -40,7 +45,9 @@ routes.post.collection = function(req, res){
 
 };
 
-//Routes: Read
+/**
+*   Read
+**/
 routes.get.item = function(req, res){
 
     var tempCollection;
@@ -65,12 +72,6 @@ routes.get.item = function(req, res){
 
 };
 
-routes.get.collectionById = function(req, res){};
-
-routes.get.itemByName = function(req, res){};
-
-routes.get.itemByCollection = function(req, res){};
-
 routes.get.items = function(req, res){
 
     var tempCollection;
@@ -84,7 +85,7 @@ routes.get.items = function(req, res){
     var ObjectId = mongojs.ObjectId;    
     var my_objectID = ObjectId(req.params.id);
 
-    tempCollection.find({}, function(err, docs){
+    tempCollection.find({activeStatus:"1"}, function(err, docs){
 
         console.log(err);
         console.log(docs);
@@ -115,7 +116,7 @@ routes.put.item = function(req, res){
 
         //req.body.query.delete;
 
-        tempCollection.find({day:req.body.day}, function(err, docs){
+        tempCollection.find({day:req.body.day}).sort({startTime:1}, function(err, docs){
 
             console.log("found them");
             res.send(docs);

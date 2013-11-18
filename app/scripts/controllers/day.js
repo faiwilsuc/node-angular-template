@@ -2,12 +2,10 @@
 
 var DayCtrl = angular.module('confAppApp').controller('DayCtrl', function ($scope, $location, $routeParams, ConfSessions, datasets) {
 
-    if($routeParams.day){
-            console.log("datasets");
-            console.log(datasets);
-            $scope.items = datasets;
-    }
-
+    console.log("datasets");
+    console.log(datasets);
+    $scope.items = datasets;
+    $scope.targetUrl = "/sessions/";
 });
 
   //resolve function to run before controller

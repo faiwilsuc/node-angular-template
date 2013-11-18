@@ -89,10 +89,12 @@ app.post('/api/userLogout', function(req, res){
 });
 
 app.post('/api/checkUserStatus', function(req, res){
-    
+    console.log("Is user logged in");
     if(req.isAuthenticated()){
+        console.log("User is logged in");
         res.send('true');
     }else{
+        console.log("User is NOT logged in ");
         res.status(401);
         res.send('false');
     }
@@ -121,16 +123,26 @@ app.get('/api/createUser/:username/:password', function(req, res){
 });     
 
 //Routes
+
+//Create a new session or get existing sessions by variable criteria
 app.post('/api/collection/sessions', routes.put.item);
+
+//Create  a new collection
 app.post('/api/collection', routes.post.collection);
 
+//Get an item by name
 app.get('/api/collection/:collection/:item', routes.get.item);
+
+//Get a collection
 app.get('/api/collection/:collection', routes.get.items);
 
+//Delete an item
 app.delete('/api/collection/sessions/:item_name', routes.delete.item);
 
+//Update an item
 app.put('/api/collection/sessions', routes.put.item);
 
+//User login
 app.post('/api/user/login', passport.authenticate('local'), function(req, res){
     
     res.send("true");

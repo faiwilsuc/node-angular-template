@@ -51,9 +51,13 @@ contentTools.directive('ctContentContainer', function ($templateCache, $rootScop
     //Content templates
     var templates = {
         "text|div": {
-            "edit": "<input type='text' id='{{id}}' class='{{class}} contentInput' ng-model='{{model}}' value='{{content}}'/>",
-            "view": "<span id='{{id}}' class='{{class}}'>{{content}}</div>"
+            "edit": "<label>{{name}}</label><input type='text' id='{{id}}' class='{{class}} contentInput' ng-model='{{model}}' value='{{content}}'/>",
+            "view": "<h3>{{name}}</h3><span id='{{id}}' class='{{class}}'>{{content}}</div>"
         },
+        "text|hidden": {
+            "edit": "<label>{{name}}</label><input type='text' id='{{id}}' class='{{class}} contentInput' ng-model='{{model}}' value='{{content}}'/>",
+            "view": ""
+        },        
         "select|ul": {
             "edit": "<ul></ul>",
             "view": "<select>{{items}}</select>"
@@ -134,11 +138,12 @@ contentTools.directive('ctContentContainer', function ($templateCache, $rootScop
                 endEdit;
 
             console.log('in module');
-            console.log(scope);
+            console.log(attrs);
 
             element.html(compileTemplate('text|div', 'view', {
                 model: attrs.model,
                 content: scope.content[attrs.model],
+                name: attrs.name,
                 editMode: false
             }));
 
@@ -151,6 +156,7 @@ contentTools.directive('ctContentContainer', function ($templateCache, $rootScop
                 template = compileTemplate('text|div', 'edit', {
                     model: attrs.model,
                     content: scope.content[attrs.model],
+                    name: attrs.name,
                     editMode: editMode
                 });
 
@@ -217,6 +223,7 @@ contentTools.directive('ctContentContainer', function ($templateCache, $rootScop
                 template = compileTemplate('text|div', 'view', {
                     model: attrs.model,
                     content: scope.content[attrs.model],
+                    name: attrs.name,
                     editMode: editMode
                 });
 
@@ -236,6 +243,7 @@ contentTools.directive('ctContentContainer', function ($templateCache, $rootScop
                 template = compileTemplate('text|div', 'view', {
                     model: attrs.model,
                     content: scope.content[attrs.model],
+                    name: attrs.name,
                     editMode: editMode
                 });
 

@@ -8,8 +8,6 @@ angular.module('confAppApp')
     //get all sessions
     $scope.items = ConfSessions.query();
 
-  	//$scope.items = [];
-
     $scope.deleteItem = function(itemName){
 
       $location.path('/delete/' + itemName);
@@ -22,7 +20,7 @@ angular.module('confAppApp')
 
     };
 
-    $scope.targetUrl = '/' + $routeParams.collection + "/";
+    $scope.targetUrl = '/sessions/';
     
     $scope.viewItem = function(targetItem){
 
