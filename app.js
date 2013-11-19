@@ -8,7 +8,7 @@ var express = require('express'),
     routes = require('./routes/routes'),
     mongojs = require('mongojs'), 
     db = mongojs('ss-cms'), 
-    items = db.collection('items'),
+    sessions = db.collection('session'),
     users = db.collection('users'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
@@ -129,6 +129,20 @@ app.post('/api/collection/sessions', routes.put.item);
 
 //Create  a new collection
 app.post('/api/collection', routes.post.collection);
+
+//Manually create item
+app.get('/api/create/session/:itemName/', function(req, res){
+    
+    sessions.save({sessionName: req.params.itemName, activeStatus: 1}, function(err, docs){
+
+        res.send(err + "<br />" + docs);
+
+    });
+
+});
+
+//get an item by day
+//app.get('/api/collection/:collection/:item', routes.get.itemByDay);
 
 //Get an item by name
 app.get('/api/collection/:collection/:item', routes.get.item);
