@@ -28,7 +28,7 @@ ItemCtrl.resolve = {
     datasets : function($q, $http, $route, ConfSessions) {
         var deferred = $q.defer();
 
-        ConfSessions.query({item_name:$route.current.params.item}, function(resultData){
+        ConfSessions.query({item_name:$route.current.params.session}, function(resultData){
             deferred.resolve(resultData);
         });
 

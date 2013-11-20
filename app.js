@@ -15,6 +15,7 @@ var express = require('express'),
     crypto = require('crypto');
 
 // all environment
+app.use(express.favicon());
 app.set('port', process.env.PORT || 3000);
 app.use(express.cookieParser());
 app.use(express.session({secret: "SECRET"}));
@@ -123,6 +124,14 @@ app.get('/api/createUser/:username/:password', function(req, res){
 });     
 
 //Routes
+
+
+//Check if timetable is active
+app.get('/api/isActive', function(req, res){
+
+    res.send('true');
+
+});
 
 //Create a new session or get existing sessions by variable criteria
 app.post('/api/collection/sessions', routes.put.item);
