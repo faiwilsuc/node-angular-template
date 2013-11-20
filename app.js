@@ -14,7 +14,11 @@ var express = require('express'),
     LocalStrategy = require('passport-local').Strategy,
     crypto = require('crypto');
 
-// all environment
+/**
+*   Use middleware
+**/
+
+//Make express serve the faicon to preserve sessions
 app.use(express.favicon());
 app.set('port', process.env.PORT || 3000);
 app.use(express.cookieParser());
